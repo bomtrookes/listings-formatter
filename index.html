@@ -5,9 +5,67 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js"></script>
   <title>Cinema Listings Formatter</title>
 </head>
 <body>
+  <div class="container">
+    <h1>Cinema Listings Formatter</h1>
+    <h4 id="refresh" onClick="window.location.reload()">Refresh Page</h4>
+    <div class="how-to">
+      <h3>How to Use:</h3>
+      <p>Find the <em>'Cinema Flyer</em> report on <strong>Cinema Manager</strong>.</p>
+      <p>Check that the <em>'Week Starting Date'</em> is correct</p>
+      <p>Change the <em>'Output Format'</em> to <strong>CSV download</strong></p>
+      <p>Run the report and <strong>Upload CSV</strong> to generate the formatted listings.</p>
+    </div>
+    <br>
+    <label for="cinema">Cinema Name:</label>
+    <input type="text" id="cinema">
+    <br>
+    <br>
+    <label id="week-start" for="date-select">Week Commencing:</label>
+    <input type="date" id="date-select">
+    <br>
+
+    <div class="silver-screen" style="display:none">
+      <h4>Select Silver Screen days:</h4>
+      <label for="fri_btn">Friday</label>
+      <input type="checkbox" class="tickbox" id="fri_btn">
+
+      <label for="sat_btn">Saturday</label>
+      <input type="checkbox" class="tickbox" id="sat_btn">
+
+      <label for="sun_btn">Sunday</label>
+      <input type="checkbox" class="tickbox" id="_btn">
+
+      <label for="mon_btn">Monday</label>
+      <input type="checkbox" class="tickbox" id="_btn">
+
+      <label for="tue_btn">Tuesday</label>
+      <input type="checkbox" class="tickbox" id="tue_btn">
+
+      <label for="wed_btn">Wednesday</label>
+      <input type="checkbox" class="tickbox" id="wed_btn">
+
+      <label for="thu_btn">Thursday</label>
+      <input type="checkbox" class="tickbox" id="thu_btn">
+      <br>
+      <br>
+    </div>
+
+    <input value="Upload CSV" type="file" id="upload-csv" accept=".csv" />
+    <br>
+    <br>
+    <button id="btn-upload-csv">Generate</button>
+
+    <h4 id="copy" onclick="copyText()">Copy Listings</h4>
+
+    <div class="listings">
+      <p id="display-week"></p>
+      <p id="times"></p>
+    </div>
+  </div>
   <script src="app.js"></script>
 </body>
 </html>

@@ -1,0 +1,36 @@
+body {
+  margin: 0 10%;
+  background-color: rgb(201, 201, 201);
+  font-family: Arial;
+  font-size: 14px;
+  min-height: 100vh;
+  min-width: 600px;
+}
+h1 {
+  text-align: center;
+}
+#refresh {
+  text-align: right;
+  text-decoration: underline;
+  color: maroon;
+}
+.container {
+  background-color: white;
+  min-height: 100vh;
+  min-width: 600px;
+  padding: 4px 16px;
+}
+.textbox {
+  padding-left: 20px;
+}
+.tickbox {
+  margin: 0 8px 0 0 ;
+}
+#copy {
+  display: none;
+  color: darkgreen;
+}
+.how-to {
+  border: 1px solid rgb(70, 70, 70);
+  text-align: center;
+}
