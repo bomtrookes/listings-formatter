@@ -8,6 +8,7 @@ body {
 }
 h1 {
   text-align: center;
+  color: #333;
 }
 #refresh {
   text-align: right;
@@ -31,6 +32,106 @@ h1 {
   color: darkgreen;
 }
 .how-to {
-  border: 1px solid rgb(70, 70, 70);
+  border: 1px solid rgb(173, 173, 173);
   text-align: center;
+}
+.flex-around {
+  display: flex;
+  justify-content: space-evenly;
+}
+.flex-center {
+  display: flex;
+  justify-content: center;
+}
+.flex-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.border {
+  border: 1px solid black;
+  border-radius: 8px;
+}
+.grid-container {
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+  grid-template-rows: 1fr;
+  grid-template-areas: "table info";
+  border-top: 1px solid grey;
+  color: #333;
+}
+
+aside {
+  text-align: center;
+  border-left: 1px solid rgb(215, 215, 215);
+  grid-area: info;
+  background: rgb(212, 212, 212);
+}
+.file {
+  display: grid;
+  place-items: center;
+  padding: 36px 0;
+}
+.file i {
+  font-size: 75px;
+}
+h1 {
+  background: white;
+  margin: 0;
+  padding: 12px 0;
+}
+h3 {
+  color: #333;
+  margin-left: 1rem;
+}
+.file-text {
+  padding: 24px 12px;
+}
+
+.report {
+  grid-area: table;
+  background-color: white;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: repeat(3, 1fr);
+  grid-template-areas:
+    "cinema week"
+    "silver-screen silver-screen"
+    "upload generate";
+}
+#cinema {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  grid-area: cinema;
+}
+#week {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  grid-area: week;
+}
+.silver-screen {
+  grid-area: silver-screen;
+  margin: 0 auto;
+}
+#upload {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  grid-area: upload;
+}
+#generate {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  grid-area: generate;
+}
+#times {
+  margin: 0 auto;
+  width: 70%;
+  padding: 24px;
+  background-color: white;
 }

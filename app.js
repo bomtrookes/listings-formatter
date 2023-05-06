@@ -127,5 +127,5 @@ const copyText = () => {
   textArea.select();
   document.execCommand("copy");
   document.body.removeChild(textArea);
-  copy.innerText = "Copied!"
+  copy.innerHTML = '<p><i class="bi bi-clipboard-check"></i> Copied to clipboard</p>'
 }
