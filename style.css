@@ -4,7 +4,7 @@ body {
   font-family: Arial;
   font-size: 14px;
   min-height: 100vh;
-  min-width: 600px;
+  min-width: 300px;
 }
 h1 {
   text-align: center;
@@ -18,7 +18,7 @@ h1 {
 .container {
   background-color: white;
   min-height: 100vh;
-  min-width: 600px;
+  min-width: 300px;
   padding: 4px 16px;
 }
 .textbox {
@@ -99,39 +99,63 @@ h3 {
   grid-template-areas:
     "cinema week"
     "silver-screen silver-screen"
-    "upload generate";
+    "buttons buttons";
 }
-#cinema {
+#cinema-name {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   grid-area: cinema;
 }
 #week {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   grid-area: week;
 }
 .silver-screen {
   grid-area: silver-screen;
+  text-align: center;
   margin: 0 auto;
 }
-#upload {
+#buttons {
   display: flex;
   align-items: center;
   justify-content: center;
-  grid-area: upload;
-}
-#generate {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  grid-area: generate;
+  grid-area: buttons;
 }
 #times {
   margin: 0 auto;
   width: 70%;
   padding: 24px;
   background-color: white;
+}
+
+@media screen and (max-width: 890px){
+  body {
+    margin: 0;
+  }
+}
+@media screen and (max-width: 700px){
+  .grid-container {
+      grid-template-columns: 1fr;
+      grid-template-rows: 0.2fr 1fr;
+      grid-template-areas:
+        "info"
+        "table";
+  }
+  .file {
+    padding: 6px 0;
+  }
+  .file-text {
+    padding: 6px 0;
+  }
+  label {
+    font-size: 12px;
+  }
+  #times {
+    width: 100%;
+  }
 }
