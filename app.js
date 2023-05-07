@@ -40,20 +40,21 @@ btn_upload.addEventListener("click", ()=> {
     header: false,
     complete: function(rows) {
       rows.data.forEach((row) => {
-        // if(row[57] != "") { Fri[row[32]] = addAsterix(row[57], checkboxes[0]) }
-        // if(row[58] != "") { Sat[row[32]] = addAsterix(row[58], checkboxes[1]) }
-        // if(row[59] != "") { Sun[row[32]] = addAsterix(row[59], checkboxes[2]) }
-        // if(row[60] != "") { Mon[row[32]] = addAsterix(row[60], checkboxes[3]) }
-        // if(row[61] != "") { Tue[row[32]] = addAsterix(row[61], checkboxes[4]) }
-        // if(row[62] != "") { Wed[row[32]] = addAsterix(row[62], checkboxes[5]) }
-        // if(row[63] != "") { Thu[row[32]] = addAsterix(row[63], checkboxes[6]) }
-        if(row[57] != "") { Fri[row[32]] = row[57] }
-        if(row[58] != "") { Sat[row[32]] = row[58] }
-        if(row[59] != "") { Sun[row[32]] = row[59] }
-        if(row[60] != "") { Mon[row[32]] = row[60] }
-        if(row[61] != "") { Tue[row[32]] = row[61] }
-        if(row[62] != "") { Wed[row[32]] = row[62] }
-        if(row[63] != "") { Thu[row[32]] = row[63] }
+        if(row[57] != "") { Fri[row[32]] = addAsterix(row[57], checkboxes[0]) }
+        if(row[58] != "") { Sat[row[32]] = addAsterix(row[58], checkboxes[1]) }
+        if(row[59] != "") { Sun[row[32]] = addAsterix(row[59], checkboxes[2]) }
+        if(row[60] != "") { Mon[row[32]] = addAsterix(row[60], checkboxes[3]) }
+        if(row[61] != "") { Tue[row[32]] = addAsterix(row[61], checkboxes[4]) }
+        if(row[62] != "") { Wed[row[32]] = addAsterix(row[62], checkboxes[5]) }
+        if(row[63] != "") { Thu[row[32]] = addAsterix(row[63], checkboxes[6]) }
+
+        // if(row[57] != "") { Fri[row[32]] = row[57] }
+        // if(row[58] != "") { Sat[row[32]] = row[58] }
+        // if(row[59] != "") { Sun[row[32]] = row[59] }
+        // if(row[60] != "") { Mon[row[32]] = row[60] }
+        // if(row[61] != "") { Tue[row[32]] = row[61] }
+        // if(row[62] != "") { Wed[row[32]] = row[62] }
+        // if(row[63] != "") { Thu[row[32]] = row[63] }
       })
       config()
     }
@@ -68,6 +69,7 @@ let clean = (day) => {
       .replaceAll('{', "")
       .replaceAll('}', "")
       .replaceAll("�", "'")
+      .replaceAll(", undefined", "")
       .replaceAll(/\s\:/g, "")
       .replaceAll(/\s\,\s(?=[A-Z])/g, '\n')
 }
@@ -93,12 +95,12 @@ startDateInput.addEventListener('change', function() {
   startDateInput.style.display = "none";
 });
 
-// window.getSelection().toString -> get value of highlighted stringg
-
 function addAsterix(str, param) {
-  console.log(str)
+  if (str === undefined) { return ''; }
+  console.log("line 98", str, param.checked)
   const match = str.match(/\d{2}:\d{2}/g);
-  if (!match) { return str };
+  if (!match || match.length === 0) { return str };
+
 
   const times = match;
   const threshold = new Date();
@@ -110,11 +112,14 @@ function addAsterix(str, param) {
     date.setHours(...time.split(":"));
     if (date < threshold && param.checked == true) {
       formatted.push(`*${time}`);
+      console.log("line 114 - if formatted", time, param.checked)
     } else {
       formatted.push(time.toString())
+      console.log("line 117 - else formatted", time, param.checked)
     }
   })
-  return formatted.toString().replaceAll(",", ", ")
+  console.log("line 120 - formatted", formatted)
+  return formatted.filter(Boolean).join(", ");
 }
 
 const copy = document.querySelector("#copy")
